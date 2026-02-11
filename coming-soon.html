@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon — PremiumTrains</title>
+  <meta name="description" content="This page is coming soon to PremiumTrains. We're building the world's most comprehensive guide to premium train experiences.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://premiumtrains.com/coming-soon">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚄</text></svg>">
+
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #0B1D35;
+      --secondary: #C9A84C;
+      --secondary-light: #dfc476;
+      --bg: #FAFAF5;
+      --text: #1B1B2F;
+      --text-light: #5A5A6E;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text);
+      background: var(--primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Animated background */
+    .bg-pattern {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.03;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 60px,
+          rgba(255,255,255,0.5) 60px,
+          rgba(255,255,255,0.5) 61px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 60px,
+          rgba(255,255,255,0.5) 60px,
+          rgba(255,255,255,0.5) 61px
+        );
+    }
+
+    /* Moving train track animation */
+    .track-animation {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .track-animation::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 200%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--secondary) 0px,
+        var(--secondary) 30px,
+        transparent 30px,
+        transparent 50px
+      );
+      animation: trackMove 4s linear infinite;
+    }
+
+    @keyframes trackMove {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(25px); }
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 32px 24px;
+      max-width: 560px;
+      animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 48px;
+      text-decoration: none;
+    }
+
+    .logo span {
+      font-weight: 400;
+      color: var(--secondary);
+    }
+
+    .logo svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .overline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 20px;
+    }
+
+    .overline::before,
+    .overline::after {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--secondary);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .form-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .form-group input {
+      flex: 1;
+      padding: 14px 18px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      border: 2px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input::placeholder {
+      color: rgba(255,255,255,0.35);
+    }
+
+    .form-group input:focus {
+      border-color: var(--secondary);
+    }
+
+    .form-group button {
+      padding: 14px 24px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: inherit;
+      background: var(--secondary);
+      color: var(--primary);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .form-group button:hover {
+      background: var(--secondary-light);
+    }
+
+    .small-text {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 40px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--secondary);
+      text-decoration: none;
+      transition: all 0.2s;
+      padding: 10px 0;
+    }
+
+    .back-link:hover {
+      color: var(--secondary-light);
+    }
+
+    .back-link .arrow {
+      transition: transform 0.2s;
+    }
+
+    .back-link:hover .arrow {
+      transform: translateX(-4px);
+    }
+
+    /* Train illustration */
+    .train-illustration {
+      margin: 0 auto 40px;
+      width: 120px;
+      height: 80px;
+      position: relative;
+    }
+
+    .train-illustration svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    @media (max-width: 480px) {
+      .form-group {
+        flex-direction: column;
+      }
+
+      .form-group button {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .track-animation::before {
+        animation: none;
+      }
+
+      .content {
+        animation: none;
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-pattern" aria-hidden="true"></div>
+<div class="track-animation" aria-hidden="true"></div>
+
+<div class="content">
+  <a href="/" class="logo" aria-label="PremiumTrains home">
+    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="32" height="32" rx="6" fill="#C9A84C"/>
+      <path d="M6 22h20M8 18h16l2-6H6l2 6zm3-6V8h10v4" stroke="#0B1D35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="11" cy="22" r="2" fill="#0B1D35"/>
+      <circle cx="21" cy="22" r="2" fill="#0B1D35"/>
+    </svg>
+    PREMIUM<span>TRAINS</span>
+  </a>
+
+  <div class="train-illustration" aria-hidden="true">
+    <svg viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Simple train silhouette -->
+      <rect x="10" y="30" width="90" height="30" rx="4" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+      <rect x="15" y="35" width="15" height="12" rx="2" fill="rgba(201,168,76,0.3)"/>
+      <rect x="35" y="35" width="15" height="12" rx="2" fill="rgba(201,168,76,0.2)"/>
+      <rect x="55" y="35" width="15" height="12" rx="2" fill="rgba(201,168,76,0.15)"/>
+      <rect x="75" y="35" width="15" height="12" rx="2" fill="rgba(201,168,76,0.1)"/>
+      <path d="M5 30 L10 30 L10 60 L5 55 Z" fill="rgba(201,168,76,0.3)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+      <!-- Wheels -->
+      <circle cx="25" cy="62" r="4" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+      <circle cx="50" cy="62" r="4" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+      <circle cx="75" cy="62" r="4" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+      <!-- Track -->
+      <line x1="0" y1="68" x2="120" y2="68" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+      <line x1="0" y1="72" x2="120" y2="72" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <div class="overline">Coming Soon</div>
+  <h1>This Route Is<br>Under Construction</h1>
+  <p>We're building something extraordinary — the world's most comprehensive guide to premium train experiences. This page will be arriving at the platform shortly.</p>
+
+  <form class="form-group" action="#" method="POST" aria-label="Get notified when this page launches">
+    <label for="cs-email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Email</label>
+    <input type="email" id="cs-email" name="email" placeholder="Get notified when we launch" required autocomplete="email">
+    <button type="submit">Notify Me</button>
+  </form>
+  <p class="small-text">No spam. Just a one-time notification when this page goes live.</p>
+
+  <a href="/" class="back-link">
+    <span class="arrow">&larr;</span>
+    Back to homepage
+  </a>
+</div>
+
+</body>
+</html>
